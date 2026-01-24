@@ -85,14 +85,14 @@ Downloads new commits/branches from a remote without modifying your local branch
 Typically means fetch + merge (or fetch + rebase if configured). Updates your current branch with remote changes.
 
 ### Push
-Uploads your local commits to a remote repo.
+Upload your local commits to a remote repo.
 
 ### Upstream tracking branch
 A relationship between your local branch and a remote branch (e.g., local `feature/x` tracks `origin/feature/x`). Enables simpler `git pull`/`git push` without specifying remote/branch each time.
 
 ---
 
-## File States (Critical to Understand)
+## File States :- Important Terms in Git Files Terminology
 A file in Git is typically in one of these states:
 
 ### Untracked
@@ -133,27 +133,10 @@ Revert file content in the working directory back to a previous state (often las
 ### Revert
 Creates a new commit that undoes a prior commit (safe for shared history).
 
-### Reset
-Moves a branch pointer and optionally alters staging/working directory (powerful, can rewrite history).
-
-- `--soft`: moves branch pointer, keeps staged changes.
-- `--mixed` (default): moves pointer, keeps working changes but unstages.
-- `--hard`: moves pointer and discards changes (dangerous).
-
 ### Stash
 Temporarily shelves uncommitted changes so you can switch branches cleanly, then re-apply later.
 
----
-
-## Common Glossary You'll See in Teams
-
-### Fast-forward
-A merge where the target branch just moves forward to the new commit (no merge commit created) because there's no divergence.
-
-### Fork (platform concept)
-A server-side copy of a repository under your account/namespace (common on GitHub), used for contributing without direct write access.
-
-### Pull request / Merge request (platform concept)
+### Pull request / Merge request
 A code review and merge workflow request to integrate changes from one branch into another.
 
 ---
@@ -173,31 +156,6 @@ git push -u origin feature/my-change
 git switch main
 git pull
 git branch -d feature/my-change
-```
-
----
-
-## Two Common Beginner Issues and Fixes
-
-### A) You forgot to create a branch and committed on main
-Create a branch from where you are and push it:
-
-```bash
-git switch -c feature/my-change
-git push -u origin feature/my-change
-```
-
-Then open a PR. (Optionally reset local main to match GitHub later, but avoid `reset --hard` until you're comfortable.)
-
-### B) Pull says you have conflicts
-Open the conflicted files and resolve markers (`<<<<<<`, `======`, `>>>>>>`)
-
-Then:
-
-```bash
-git add .
-git commit
-git push
 ```
 
 ---
